@@ -1,0 +1,362 @@
+{
+  "AE": {
+    "country": "United Arab Emirates",
+    "eutpd": false
+  },
+  "AE-DF": {
+    "country": "Utd.Arab.Emir. DF",
+    "eutpd": false
+  },
+  "AM": {
+    "country": "Armenia",
+    "eutpd": false
+  },
+  "AT": {
+    "country": "Austria",
+    "eutpd": true
+  },
+  "AU": {
+    "country": "Australia",
+    "eutpd": false
+  },
+  "AZ": {
+    "country": "Azerbaijan",
+    "eutpd": false
+  },
+  "BA": {
+    "country": "Bosnia-Herzegowina",
+    "eutpd": false
+  },
+  "BE": {
+    "country": "Belgium",
+    "eutpd": true
+  },
+  "BF": {
+    "country": "Burkina Faso",
+    "eutpd": false
+  },
+  "BG": {
+    "country": "Bulgaria",
+    "eutpd": true
+  },
+  "BH": {
+    "country": "Bahrain",
+    "eutpd": false
+  },
+  "C1": {
+    "country": "Canary Islands",
+    "eutpd": false
+  },
+  "CA": {
+    "country": "Canada",
+    "eutpd": false
+  },
+  "CH": {
+    "country": "Switzerland",
+    "eutpd": false
+  },
+  "CH-DF": {
+    "country": "Switzerland DF",
+    "eutpd": false
+  },
+  "CI": {
+    "country": "Ivory Coast",
+    "eutpd": false
+  },
+  "CN-DF": {
+    "country": "China-DF",
+    "eutpd": false
+  },
+  "CY": {
+    "country": "Cyprus",
+    "eutpd": true
+  },
+  "CY-TR": {
+    "country": "Cyprus (Turkish)",
+    "eutpd": false
+  },
+  "CZ": {
+    "country": "Czech Republic",
+    "eutpd": true
+  },
+  "DE": {
+    "country": "Germany",
+    "eutpd": true
+  },
+  "DE-PL": {
+    "country": "Germany PL",
+    "eutpd": true
+  },
+  "DF-GE": {
+    "country": "DF Georgia",
+    "eutpd": false
+  },
+  "DF-HK": {
+    "country": "DF Hong Kong",
+    "eutpd": false
+  },
+  "DF-MA": {
+    "country": "DF Morocco",
+    "eutpd": false
+  },
+  "DF-TR": {
+    "country": "DF Turkey",
+    "eutpd": false
+  },
+  "DK": {
+    "country": "Denmark",
+    "eutpd": true
+  },
+  "EE": {
+    "country": "Estonia",
+    "eutpd": true
+  },
+  "EG": {
+    "country": "Egypt",
+    "eutpd": false
+  },
+  "EG-DF": {
+    "country": "Egypt Duty Free",
+    "eutpd": false
+  },
+  "ES": {
+    "country": "Spain",
+    "eutpd": true
+  },
+  "ES-MRO": {
+    "country": "Spain MRO",
+    "eutpd": true
+  },
+  "EU-AT": {
+    "country": "EU Austria",
+    "eutpd": true
+  },
+  "EU-BG": {
+    "country": "EU Bulgaria DF",
+    "eutpd": true
+  },
+  "EU-CZ": {
+    "country": "EU Czech Republic DF",
+    "eutpd": true
+  },
+  "EU-GR": {
+    "country": "EU Greece",
+    "eutpd": true
+  },
+  "EU-SE": {
+    "country": "EU Sweden",
+    "eutpd": true
+  },
+  "FI": {
+    "country": "Finland",
+    "eutpd": true
+  },
+  "FR": {
+    "country": "France",
+    "eutpd": true
+  },
+  "FR-DOM": {
+    "country": "France Oversea Departments",
+    "eutpd": true
+  },
+  "FR-MRO": {
+    "country": "France - MRO",
+    "eutpd": true
+  },
+  "GB": {
+    "country": "United Kingdom",
+    "eutpd": false
+  },
+  "GB-DF": {
+    "country": "United Kingdom (UK) DF",
+    "eutpd": false
+  },
+  "GE": {
+    "country": "Georgia",
+    "eutpd": false
+  },
+  "GI": {
+    "country": "Gibraltar",
+    "eutpd": false
+  },
+  "GR": {
+    "country": "Greece",
+    "eutpd": true
+  },
+  "HR": {
+    "country": "Croatia",
+    "eutpd": true
+  },
+  "HU": {
+    "country": "Hungary",
+    "eutpd": true
+  },
+  "HWDF": {
+    "country": "General Duty Free",
+    "eutpd": false
+  },
+  "IE": {
+    "country": "Ireland",
+    "eutpd": true
+  },
+  "IE-DF": {
+    "country": "Ireland DF",
+    "eutpd": true
+  },
+  "IL": {
+    "country": "Israel",
+    "eutpd": false
+  },
+  "IL-DF": {
+    "country": "Israel DF",
+    "eutpd": false
+  },
+  "IT": {
+    "country": "Italy",
+    "eutpd": true
+  },
+  "IT-DF": {
+    "country": "Italy DF",
+    "eutpd": true
+  },
+  "K1": {
+    "country": "Kosovo",
+    "eutpd": false
+  },
+  "KH": {
+    "country": "Cambodia",
+    "eutpd": false
+  },
+  "KW": {
+    "country": "Kuwait",
+    "eutpd": false
+  },
+  "KZ": {
+    "country": "Kazakhstan",
+    "eutpd": false
+  },
+  "LB": {
+    "country": "Lebanon",
+    "eutpd": false
+  },
+  "LU": {
+    "country": "Luxembourg",
+    "eutpd": true
+  },
+  "MD": {
+    "country": "Moldova",
+    "eutpd": false
+  },
+  "MK": {
+    "country": "Macedonia",
+    "eutpd": false
+  },
+  "MT": {
+    "country": "Malta",
+    "eutpd": true
+  },
+  "MY-DF": {
+    "country": "Malaysia-DF",
+    "eutpd": false
+  },
+  "NL": {
+    "country": "Netherlands",
+    "eutpd": true
+  },
+  "NL-DF": {
+    "country": "Netherlands DF",
+    "eutpd": true
+  },
+  "NO": {
+    "country": "Norway",
+    "eutpd": false
+  },
+  "NWGX": {
+    "country": "Export (General)",
+    "eutpd": false
+  },
+  "PL": {
+    "country": "Poland",
+    "eutpd": true
+  },
+  "PS": {
+    "country": "Palestine",
+    "eutpd": false
+  },
+  "PT": {
+    "country": "Portugal",
+    "eutpd": true
+  },
+  "RO": {
+    "country": "Romania",
+    "eutpd": true
+  },
+  "RS": {
+    "country": "Serbia",
+    "eutpd": false
+  },
+  "RS-DF": {
+    "country": "Serbia DF",
+    "eutpd": false
+  },
+  "RU": {
+    "country": "Russia",
+    "eutpd": false
+  },
+  "RU-DF": {
+    "country": "Russia DF",
+    "eutpd": false
+  },
+  "SA": {
+    "country": "Saudi Arabia",
+    "eutpd": false
+  },
+  "SI": {
+    "country": "Slovenia",
+    "eutpd": true
+  },
+  "SK": {
+    "country": "Slovakia",
+    "eutpd": true
+  },
+  "SN": {
+    "country": "Senegal",
+    "eutpd": false
+  },
+  "TH-DF": {
+    "country": "Thailand DF",
+    "eutpd": false
+  },
+  "TR": {
+    "country": "Turkey",
+    "eutpd": false
+  },
+  "TW": {
+    "country": "Taiwan",
+    "eutpd": false
+  },
+  "TW-DF": {
+    "country": "Taiwan DF",
+    "eutpd": false
+  },
+  "UA": {
+    "country": "Ukraine",
+    "eutpd": false
+  },
+  "UZ": {
+    "country": "Uzbekistan",
+    "eutpd": false
+  },
+  "XI": {
+    "country": "Northern Ireland",
+    "eutpd": false
+  },
+  "YCI": {
+    "country": "Channel Islands",
+    "eutpd": false
+  },
+  "YCI-DF": {
+    "country": "Channel Islands DF",
+    "eutpd": false
+  }
+}
