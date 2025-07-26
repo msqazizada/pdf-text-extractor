@@ -19,6 +19,7 @@ class DataExtractor:
         """
         self.filename = filename
         self._cached_pdf = None  # Cache the PDF object for multiple operations
+        self._fallback_logged_pages = set()
 
     def __enter__(self):
         """Support context manager protocol."""
@@ -60,13 +61,24 @@ class DataExtractor:
                 log(f"Page {page + 1} is out of range (total pages: {len(pdf.pages)})")
                 return False
 
-            text = pdf.pages[page].extract_text()
-            if not text or text.strip() == "":
+            page_obj = pdf.pages[page]
+
+            # Method 1: Try extract_text
+            text = page_obj.extract_text()
+            # No text at all? Definitely not readable.
+            if not text or not text.strip():
                 return False
 
-            # Add more checks here: if it’s all whitespace or short garbage text
-            cleaned = text.strip().replace("\n", "").replace(" ", "")
-            if len(cleaned) < 10:  # Threshold: too little usable text
+            # Method 2: Count unique characters
+            # cleaned = text.strip().replace("\n", "").replace(" ", "")
+            cleaned = text.replace("\n", "").replace(" ", "")
+            # Heuristic: Short length or too few distinct characters
+            if len(cleaned) < 10 or len(set(cleaned)) <= 3:
+                return False
+
+            # Method 3: Check if any characters exist on the page
+            chars = page_obj.chars
+            if not chars or len(chars) < 5:
                 return False
 
             return True
@@ -89,7 +101,9 @@ class DataExtractor:
                 log(f"Using PdfReader for page {page + 1} of {self.filename}")
                 return PdfReader(self.filename)
             else:
-                log(f"Falling back to OcrReader for page {page + 1} of {self.filename}")
+                if page not in self._fallback_logged_pages:
+                    log(f"Falling back to OcrReader for page {page + 1} of {self.filename}")
+                    self._fallback_logged_pages.add(page)
         except Exception as e:
             log(f"Error determining best reader for page {page + 1}, falling back to OCR: {e}")
         return OcrReader(self.filename)
@@ -124,7 +138,8 @@ class DataExtractor:
                 try:
                     text = reader.read_text_from_box(page, box)
                     # if text and (not match_strategy or match_strategy.matches(text)):
-                    return text.strip()
+                    if text is not None:
+                        return text.strip()
                 except Exception as e:
                     log(f"Failed to read from box {box} on page {page + 1}: {e}")
                     continue

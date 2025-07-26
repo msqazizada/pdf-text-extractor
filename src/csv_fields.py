@@ -1,4 +1,5 @@
 import inspect
+import time
 from typing import Dict, List, Tuple
 
 import pdfplumber
@@ -33,6 +34,8 @@ class CSVFields:
         Automatically calls all methods that start with 'get_' and merges their dict results.
         :return: dict: {"Field Name": "Extracted Value"}
         """
+        start = time.perf_counter()
+
         results = {
             'File': self.filename,
             'Total Pages': self.total_pages,
@@ -45,6 +48,10 @@ class CSVFields:
                     results.update(method())
                 except Exception as e:
                     results[name[4:]] = f"ERROR: {str(e)}"
+
+        end = time.perf_counter()
+        elapsed_seconds = round(end - start, 2)
+        results['Time (s)'] = elapsed_seconds
 
         return results
 
