@@ -1,5 +1,7 @@
 from src.csv_fields import CSVFields
 from src.csv_writer import CSVWriter
+from src.readers.ocr_reader import OcrReader
+from src.readers.pdf_reader import PdfReader
 
 results = "results.csv"
 pdfs_dir = "./pdfs"
@@ -18,5 +20,10 @@ def run():
 if __name__ == '__main__':
     # run()
     filename = pdfs_dir + '/HWT03-001663-A-LowRes.pdf'
-    fields = CSVFields(filename)
-    print(fields.extract_all())
+    # fields = CSVFields(filename)
+    # print(fields.extract_all())
+    pdf_reader = PdfReader(filename)
+    print('pdf reader:', pdf_reader.find_text_coordinates('CH'))
+    ocr_reader = OcrReader(filename)
+    print('ocr reader:', ocr_reader.find_text_coordinates('CH'))
+

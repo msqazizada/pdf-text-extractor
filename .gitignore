@@ -1,3 +1,4 @@
 /.idea
 */__pycache__
 */*/__pycache__
+/src/pdf_text_extractor.egg-info/

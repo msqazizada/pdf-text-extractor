@@ -1,6 +1,14 @@
 import json
 
 
+def load_country_data(json_path="country_data.json"):
+    with open(json_path, "r", encoding="utf-8") as f:
+        return json.load(f)
+
+
+COUNTRY_DATA = load_country_data()
+
+
 def enrich_country_info(text: str, data: dict) -> dict | None:
     """
     Tries to fill all 3 fields (Land, Länderkürzel, EUTPD) from any one of them.
@@ -34,14 +42,6 @@ def enrich_country_info(text: str, data: dict) -> dict | None:
             }
 
     return None
-
-
-def load_country_data(json_path="country_data.json"):
-    with open(json_path, "r", encoding="utf-8") as f:
-        return json.load(f)
-
-
-COUNTRY_DATA = load_country_data()
 
 
 def get_country_info_by_code(code: str, data: dict) -> dict | None:

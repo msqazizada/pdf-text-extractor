@@ -152,29 +152,67 @@ class CSVFields:
             r".(.)$"
         )
 
-    def get_eutpd(self) -> dict:
+    def _enrich_country_fields(self, visited: set) -> dict:
         """
-        @TODO
-        :return: dictionary containing field name and field value
+        Attempts to fill Land, Länderkürzel, and EUTPD from whatever is available.
+        Avoids infinite recursion by tracking visited field methods.
         """
-        likely_results = [
-            "EUTPD 11-1 PL - SET 2",
-            "MOLDOVA - SET 1",
-            "EUTPD 11-1 AT - SET 2",
-            "CH -SET 2"
-        ]
-        return self._extract_field(
-            'EUTPD',
+        from src.country import enrich_country_info, COUNTRY_DATA
+
+        current_values = {
+            "Land": getattr(self, "_land", None),
+            "Länderkürzel": getattr(self, "_länderkurzel", None),
+            "EUTPD": getattr(self, "_eutpd", None),
+        }
+
+        for val in current_values.values():
+            if val and val != "-":
+                enriched = enrich_country_info(val, COUNTRY_DATA)
+                if enriched:
+                    return {
+                        k: enriched[k]
+                        for k in ["Land", "Länderkürzel", "EUTPD"]
+                        if k not in visited  # only return those not visited
+                    }
+
+        return {}
+
+    def _get_country_field(
+            self,
+            field_name: str,
+            label: str,
+            box: Tuple[int, int, int, int],
+            regex: str,
+            visited: set | None = None
+    ) -> dict:
+        """
+        Extracts and enriches country-related fields: Land, Laenderkuerzel, EUTPD.
+        """
+        if visited is None:
+            visited = set()
+        visited.add(label)
+
+        result = self._extract_field(
+            label,
             0,
-            [
-                (3581, 98, 3669, 148),
-            ],
-            r"(?i)EUTPD"
+            [box],
+            regex
         )
 
-    def get_landkurzel(self) -> dict:
+        value = result[label]
+        setattr(self, f"_{field_name}", value)
+
+        if not value or value.strip() == "-":
+            enriched = self._enrich_country_fields(visited)
+            if label in enriched:
+                value = enriched[label]
+                result[label] = value
+                setattr(self, f"_{field_name}", value)
+
+        return result
+
+    def get_eutpd(self, visited=None) -> dict:
         """
-        @TODO
         :return: dictionary containing field name and field value
         """
         likely_results = [
@@ -183,18 +221,17 @@ class CSVFields:
             "EUTPD 11-1 AT - SET 2",
             "CH -SET 2"
         ]
-        return self._extract_field(
-            'LanderKurzel',
-            0,
-            [
-                (3581, 98, 3669, 148),
-            ],
-            r""
+
+        return self._get_country_field(
+            field_name="eutpd",
+            label="EUTPD",
+            box=(3581, 98, 3669, 148),
+            regex=r"(?i)EUTPD",
+            visited=visited
         )
 
-    def get_land(self) -> dict:
+    def get_laenderkuerzel(self, visited=None) -> dict:
         """
-        @TODO
         :return: dictionary containing field name and field value
         """
         likely_results = [
@@ -203,13 +240,32 @@ class CSVFields:
             "EUTPD 11-1 AT - SET 2",
             "CH -SET 2"
         ]
-        return self._extract_field(
-            'Land',
-            0,
-            [
-                (3581, 98, 3669, 148),
-            ],
-            r""
+
+        return self._get_country_field(
+            field_name="laenderkuerzel",
+            label="Laenderkuerzel",
+            box=(3581, 98, 3669, 148),
+            regex=r"",
+            visited=visited
+        )
+
+    def get_land(self, visited=None) -> dict:
+        """
+        :return: dictionary containing field name and field value
+        """
+        likely_results = [
+            "EUTPD 11-1 PL - SET 2",
+            "MOLDOVA - SET 1",
+            "EUTPD 11-1 AT - SET 2",
+            "CH -SET 2"
+        ]
+
+        return self._get_country_field(
+            field_name="land",
+            label="Land",
+            box=(3581, 98, 3669, 148),
+            regex=r"",
+            visited=visited
         )
 
     def get_set(self) -> dict:
